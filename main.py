@@ -4,6 +4,13 @@ import os, httpx
 app = FastAPI()
 TOKEN = os.getenv("WHATSAPP_TOKEN")
 PHONE_ID = os.getenv("PHONE_NUMBER_ID")
+VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
+
+@app.get("/webhook")
+async def verify(request: Request):
+    q = request.query_params
+    if q.get("hub.mode") == "subscribe" and q.get("hub.verify_token") == VERIFY_TOKEN:
+        return PlainTextResponse(q.get("hub.challenge"))
 
 @app.post("/webhook")
 async def webhook(request: Request):
