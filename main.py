@@ -6,8 +6,11 @@ TOKEN = os.getenv("WHATSAPP_TOKEN")
 PHONE_ID = os.getenv("PHONE_NUMBER_ID")
 VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
 
+print("starting")
+
 @app.get("/webhook")
 async def verify(request: Request):
+    print("get")
     q = request.query_params
     if q.get("hub.mode") == "subscribe" and q.get("hub.verify_token") == VERIFY_TOKEN:
         return PlainTextResponse(q.get("hub.challenge"))
