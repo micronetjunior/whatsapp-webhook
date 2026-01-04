@@ -10,7 +10,7 @@ async def webhook(request: Request):
     data = await request.json()
     print("\n\n📦 MENSAJE RECIBIDO:")
     print(data)
-
+    
     try:
         value = data["entry"][0]["changes"][0]["value"]
         msg = value["messages"][0]
