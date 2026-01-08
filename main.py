@@ -14,6 +14,11 @@ PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
 @app.post("/webhook")
 async def webhook(request: Request):
     data = await request.json()
+    print("📩 ENTRANTE GET:", data)
+
+@app.post("/webhook")
+async def webhook(request: Request):
+    data = await request.json()
     print("📩 ENTRANTE:", data)
 
     try:
