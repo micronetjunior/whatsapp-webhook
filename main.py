@@ -4,7 +4,11 @@ import requests
 
 app = FastAPI()
 
-TOKEN = os.getenv("WHATSAPP_TOKEN")
+META_TOKEN = os.getenv("META_TOKEN")
+RAILWAY_TOKEN = os.getenv("RAILWAY_TOKEN")
+WABA_ID = os.getenv("WABA_ID")
+WHATSAPP_TOKEN = os.getenv("WHATSAPP_TOKEN")
+VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
 PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
 
 @app.post("/webhook")
@@ -31,7 +35,7 @@ def send_message(to, text):
     url = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
 
     headers = {
-        "Authorization": f"Bearer {TOKEN}",
+        "Authorization": f"Bearer {VERIFY_TOKEN}",
         "Content-Type": "application/json"
     }
 
