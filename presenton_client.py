@@ -1,3 +1,6 @@
+import os
+import requests
+
 class PresentonClient:
     def __init__(self):
         self.internal_url = os.getenv("PRESENTON_INTERNAL_URL")
